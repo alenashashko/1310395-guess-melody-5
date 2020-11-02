@@ -1,65 +1,80 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {GameType} from '../../const';
 import AudioPlayer from '../audio-player/audio-player';
 
-const ArtistQuestionScreen = (props) => {
-  const {onAnswerClick, question} = props;
-  const {song, answers} = question;
+class ArtistQuestionScreen extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <section className="game game--artist">
-      <header className="game__header">
-        <a className="game__back" href="#">
-          <span className="visually-hidden">Сыграть ещё раз</span>
-          <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
-        </a>
+    this.state = {
+      isPlaying: true
+    };
+  }
 
-        <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
-          <circle className="timer__line" cx="390" cy="390" r="370"
-            style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}}/>
-        </svg>
+  render() {
+    const {onAnswerClick, question} = this.props;
+    const {isPlaying} = this.state;
+    const {song, answers} = question;
 
-        <div className="game__mistakes">
-          <div className="wrong" />
-          <div className="wrong" />
-          <div className="wrong" />
-        </div>
-      </header>
+    return (
+      <section className="game game--artist">
+        <header className="game__header">
+          <a className="game__back" href="#">
+            <span className="visually-hidden">Сыграть ещё раз</span>
+            <img className="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию" />
+          </a>
 
-      <section className="game__screen">
-        <h2 className="game__title">Кто исполняет эту песню?</h2>
-        <div className="game__track">
-          <div className="track">
-            <AudioPlayer isPlaying={true} src={song.src}/>
+          <svg xmlns="http://www.w3.org/2000/svg" className="timer" viewBox="0 0 780 780">
+            <circle className="timer__line" cx="390" cy="390" r="370"
+              style={{filter: `url(#blur)`, transform: `rotate(-90deg) scaleY(-1)`, transformOrigin: `center`}}/>
+          </svg>
+
+          <div className="game__mistakes">
+            <div className="wrong" />
+            <div className="wrong" />
+            <div className="wrong" />
           </div>
-        </div>
+        </header>
 
-        <form className="game__artist">
-          {answers.map((answer, i) => {
-            return (
-              <div key={answer.artist} className="artist">
-                <input className="artist__input visually-hidden" type="radio" name="answer"
-                  value={`artist-${i + 1}`}
-                  id={`artist-${i + 1}`}
-                  onChange={(evt) => {
-                    evt.preventDefault(); // ?
-                    onAnswerClick(question, answer);
-                  }}
-                />
-                <label className="artist__name" htmlFor={`artist-${i + 1}`}>
-                  <img className="artist__picture" src={answer.picture} alt={answer.artist} />
-                  {answer.artist}
-                </label>
-              </div>
-            );
-          })}
+        <section className="game__screen">
+          <h2 className="game__title">Кто исполняет эту песню?</h2>
+          <div className="game__track">
+            <div className="track">
+              <AudioPlayer
+                isPlaying={isPlaying}
+                src={song.src}
+                onPlayButtonClick = {() => this.setState({isPlaying: !isPlaying})}
+              />
+            </div>
+          </div>
 
-        </form>
+          <form className="game__artist">
+            {answers.map((answer, i) => {
+              return (
+                <div key={answer.artist} className="artist">
+                  <input className="artist__input visually-hidden" type="radio" name="answer"
+                    value={`artist-${i + 1}`}
+                    id={`artist-${i + 1}`}
+                    onChange={(evt) => {
+                      evt.preventDefault(); // ?
+                      onAnswerClick(question, answer);
+                    }}
+                  />
+                  <label className="artist__name" htmlFor={`artist-${i + 1}`}>
+                    <img className="artist__picture" src={answer.picture} alt={answer.artist} />
+                    {answer.artist}
+                  </label>
+                </div>
+              );
+            })}
+
+          </form>
+        </section>
       </section>
-    </section>
-  );
-};
+    );
+  }
+}
 
 ArtistQuestionScreen.propTypes = {
   onAnswerClick: PropTypes.func.isRequired,
