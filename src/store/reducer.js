@@ -14,8 +14,10 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.INCREMENT_STEP:
       return extend(state, {
-        step: state.step + action.payload // ?
+        step: state.step + action.payload
       });
+    case ActionType.RESET_GAME:
+      return extend({}, initialState);
     default:
       return state;
   }
