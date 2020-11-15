@@ -3,7 +3,7 @@ export const isArtistAnswerCorrect = (question, userAnswer) => {
 };
 
 export const isGenreAnswerCorrect = (question, userAnswer) => {
-  userAnswer.every((it, i) => {
+  return userAnswer.every((it, i) => {
     return it === (question.answers[i].genre === question.genre);
   });
 };
