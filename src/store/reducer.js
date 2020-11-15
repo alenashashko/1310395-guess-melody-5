@@ -12,7 +12,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.INCREMENT_MISTAKES:
-      const mistakesCount = state.mistakes + action.payload; // ?
+      const mistakesCount = state.mistakes + action.payload;
 
       if (mistakesCount >= MAX_MISTAKE_COUNT) {
         return extend({}, initialState);

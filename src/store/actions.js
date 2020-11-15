@@ -1,6 +1,10 @@
 import {GameType} from '../const';
 import {isArtistAnswerCorrect, isGenreAnswerCorrect} from '../game';
 
+const STEP = 1;
+const NO_MISTAKE = 0;
+const MISTAKE = 1;
+
 export const ActionType = {
   INCREMENT_STEP: `INCREMENT_STEP`,
   RESET_GAME: `RESET_GAME`,
@@ -10,7 +14,7 @@ export const ActionType = {
 export const ActionCreator = {
   incrementStep: () => ({
     type: ActionType.INCREMENT_STEP,
-    payload: 1 // ?
+    payload: STEP
   }),
   resetGame: () => ({
     type: ActionType.RESET_GAME
@@ -29,7 +33,7 @@ export const ActionCreator = {
 
     return {
       type: ActionType.INCREMENT_MISTAKES,
-      payload: answerIsCorrect ? 0 : 1 // ?
+      payload: answerIsCorrect ? NO_MISTAKE : MISTAKE
     };
   }
 };
