@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
 import genreQuestionProp from './genre-question.prop';
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {

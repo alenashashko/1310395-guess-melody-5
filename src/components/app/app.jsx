@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Switch, Route, BrowserRouter} from 'react-router-dom';
+
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 import AuthScreen from '../auth-screen/auth-screen';
 import GameScreen from '../game-screen/game-screen';
