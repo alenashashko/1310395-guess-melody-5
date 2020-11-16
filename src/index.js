@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from './components/app/app';
-import questions from './mocks/questions';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 
-const Settings = {
-  ERRORS_COUNT: 3
-};
+import App from './components/app/app';
+import {reducer} from './store/reducer';
+
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
 
 ReactDom.render(
-    <App errorsCount={Settings.ERRORS_COUNT} questions={questions} />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.querySelector(`#root`)
 );
