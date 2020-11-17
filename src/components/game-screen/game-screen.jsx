@@ -6,15 +6,15 @@ import {connect} from 'react-redux';
 import {GameType} from '../../const';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import withAudioPlayer from '../../hocs/with-active-player/with-active-player';
+import withActivePlayer from '../../hocs/with-active-player/with-active-player';
 import Mistakes from '../mistakes/mistakes';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
 
 import {ActionCreator} from '../../store/actions';
 
-const GenreQuestionScreenWrapped = withAudioPlayer(GenreQuestionScreen);
-const ArtistQuestionScreenWrapped = withAudioPlayer(ArtistQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 const GameScreen = (props) => { // errorsCount ?
   const {questions, step, mistakes, resetGame, onUserAnswer} = props;

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const AudioPlayer = (props) => {
+const Player = (props) => {
   const {onPlayButtonClick, isPlaying, isLoading, children} = props;
 
   return (
@@ -18,7 +18,7 @@ const AudioPlayer = (props) => {
   );
 };
 
-AudioPlayer.propTypes = {
+Player.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
@@ -28,4 +28,4 @@ AudioPlayer.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired
 };
 
-export default AudioPlayer;
+export default Player;
