@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {GameType} from '../../const';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import withAudioPlayer from '../../hocs/with-audio-player';
+import withAudioPlayer from '../../hocs/with-active-player/with-active-player';
 import Mistakes from '../mistakes/mistakes';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
