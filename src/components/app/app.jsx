@@ -12,24 +12,45 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' render={(routeProps) => {
-          const {history} = routeProps;
-          return (
-            <WelcomeScreen
-              errorsCount={MAX_MISTAKE_COUNT}
-              onPlayButtonClick={() => history.push(`/game`)}
-            />
-          );
-        }}>
+        <Route
+          exact
+          path='/'
+          render={(routeProps) => {
+            const {history} = routeProps;
+            return (
+              <WelcomeScreen
+                errorsCount={MAX_MISTAKE_COUNT}
+                onPlayButtonClick={() => history.push(`/game`)}
+              />
+            );
+          }}>
         </Route>
         <Route exact path='/login'>
           <AuthScreen />
         </Route>
-        <Route exact path='/lose'>
-          <GameOverScreen />
+        <Route
+          exact
+          path='/lose'
+          render={(routeProps) => {
+            const {history} = routeProps;
+            return (
+              <GameOverScreen
+                onReplayButtonClick={() => history.push(`/game`)}
+              />
+            );
+          }}>
         </Route>
-        <Route exact path='/result'>
-          <WinScreen />
+        <Route
+          exact
+          path='/result'
+          render={(routeProps) => {
+            const {history} = routeProps;
+            return (
+              <WinScreen
+                onReplayButtonClick={() => history.push(`/game`)}
+              />
+            );
+          }}>
         </Route>
         <Route exact path='/game'>
           <GameScreen errorsCount={MAX_MISTAKE_COUNT}/>
