@@ -34,4 +34,4 @@ GenreQuestionItem.propTypes = {
   userAnswer: PropTypes.PropTypes.bool.isRequired
 };
 
-export default GenreQuestionItem;
+export default React.memo(GenreQuestionItem);
