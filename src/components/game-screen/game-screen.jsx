@@ -7,13 +7,14 @@ import {GameType} from '../../const';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
 import withActivePlayer from '../../hocs/with-active-player/with-active-player';
+import withUserAnswer from '../../hocs/with-user-answer/with-user-answer';
 import Mistakes from '../mistakes/mistakes';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
 
 import {ActionCreator} from '../../store/actions';
 
-const GenreQuestionScreenWrapped = withActivePlayer(GenreQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 const GameScreen = (props) => { // errorsCount ?
