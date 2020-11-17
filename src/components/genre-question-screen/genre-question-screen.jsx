@@ -26,7 +26,8 @@ const GenreQuestionScreen = (props) => {
 
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
-        <form className="game__tracks"
+        <form
+          className="game__tracks"
           onSubmit={(evt) => {
             evt.preventDefault();
             onAnswer();
@@ -41,7 +42,7 @@ const GenreQuestionScreen = (props) => {
                 onChange={onChange}
                 answer={answer}
                 index={i}
-                userAnswers={userAnswers}
+                userAnswer={userAnswers[i]}
               />
             );
           })}
