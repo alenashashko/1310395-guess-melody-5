@@ -3,28 +3,33 @@ import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {GameType} from '../../const';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
-import withAudioPlayer from '../../hocs/with-audio-player';
+import withActivePlayer from '../../hocs/with-active-player/with-active-player';
+import withUserAnswer from '../../hocs/with-user-answer/with-user-answer';
 import Mistakes from '../mistakes/mistakes';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
 
+import {GameType, MAX_MISTAKE_COUNT} from '../../const';
 import {ActionCreator} from '../../store/actions';
 
-const GenreQuestionScreenWrapped = withAudioPlayer(GenreQuestionScreen);
-const ArtistQuestionScreenWrapped = withAudioPlayer(ArtistQuestionScreen);
+const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
+const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
 const GameScreen = (props) => { // errorsCount ?
-  const {questions, step, mistakes, resetGame, onUserAnswer} = props;
+  const {questions, step, mistakes, onUserAnswer} = props;
   const question = questions[step];
 
-  if (step >= questions.length || !question) {
-    resetGame();
-
+  if (mistakes >= MAX_MISTAKE_COUNT) {
     return (
-      <Redirect to='/' />
+      <Redirect to='/lose' />
+    );
+  }
+
+  if (step >= questions.length || !question) {
+    return (
+      <Redirect to='/result' />
     );
   }
 
@@ -58,7 +63,6 @@ GameScreen.propTypes = {
   ).isRequired,
   step: PropTypes.number.isRequired,
   mistakes: PropTypes.number.isRequired,
-  resetGame: PropTypes.func.isRequired,
   onUserAnswer: PropTypes.func.isRequired
 };
 
@@ -69,9 +73,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetGame() {
-    dispatch(ActionCreator.resetGame());
-  },
   onUserAnswer(question, answer) {
     dispatch(ActionCreator.incrementStep());
     dispatch(ActionCreator.incrementMistake(question, answer));
