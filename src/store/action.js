@@ -8,7 +8,8 @@ const MISTAKE = 1;
 export const ActionType = {
   INCREMENT_STEP: `INCREMENT_STEP`,
   RESET_GAME: `RESET_GAME`,
-  INCREMENT_MISTAKES: `INCREMENT_MISTAKES`
+  INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
+  LOAD_QUESTIONS: `LOAD_QUESTIONS`
 };
 
 export const incrementStep = () => ({
@@ -37,3 +38,8 @@ export const incrementMistake = (question, userAnswer) => {
     payload: answerIsCorrect ? NO_MISTAKE : MISTAKE
   };
 };
+
+export const loadQuestions = (questions) => ({
+  type: ActionType.LOAD_QUESTIONS,
+  payload: questions
+});

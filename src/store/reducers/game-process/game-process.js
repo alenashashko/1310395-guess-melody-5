@@ -1,14 +1,12 @@
-import {ActionType} from './action';
-import {extend} from '../utils';
-import questions from '../mocks/questions';
+import {ActionType} from '../../action';
+import {extend} from '../../../utils';
 
 const initialState = {
   mistakes: 0,
-  step: 0,
-  questions
+  step: 0
 };
 
-const reducer = (state = initialState, action) => {
+const gameProcess = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.INCREMENT_MISTAKES:
       const mistakesCount = state.mistakes + action.payload;
@@ -29,4 +27,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export {reducer};
+export {gameProcess};
