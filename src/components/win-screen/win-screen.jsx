@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {ActionCreator} from '../../store/actions';
+import {resetGame} from '../../store/action';
 
 const WinScreen = (props) => {
-  const {onReplayButtonClick, resetGame, questionsCount, mistakesCount} = props;
+  const {onReplayButtonClick, resetGameAction, questionsCount, mistakesCount} = props;
 
   return (
     <section className="result">
@@ -16,7 +16,7 @@ const WinScreen = (props) => {
       <p className="result__total">Вы ответили правильно на {questionsCount} вопросов и совершили {mistakesCount} ошибки</p>
       <button
         onClick={() => {
-          resetGame();
+          resetGameAction();
           onReplayButtonClick();
         }}
         className="replay"
@@ -29,7 +29,7 @@ const WinScreen = (props) => {
 
 WinScreen.propTypes = {
   onReplayButtonClick: PropTypes.func.isRequired,
-  resetGame: PropTypes.func.isRequired,
+  resetGameAction: PropTypes.func.isRequired,
   questionsCount: PropTypes.number.isRequired,
   mistakesCount: PropTypes.number.isRequired
 };
@@ -40,8 +40,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetGame() {
-    dispatch(ActionCreator.resetGame());
+  resetGameAction() {
+    dispatch(resetGame());
   }
 });
 

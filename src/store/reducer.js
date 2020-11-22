@@ -1,4 +1,4 @@
-import {ActionType} from './actions';
+import {ActionType} from './action';
 import {extend} from '../utils';
 import questions from '../mocks/questions';
 

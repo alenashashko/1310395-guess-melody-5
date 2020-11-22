@@ -12,7 +12,7 @@ import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
 
 import {GameType, MAX_MISTAKE_COUNT} from '../../const';
-import {ActionCreator} from '../../store/actions';
+import {incrementStep, incrementMistake} from '../../store/action';
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
@@ -74,8 +74,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onUserAnswer(question, answer) {
-    dispatch(ActionCreator.incrementStep());
-    dispatch(ActionCreator.incrementMistake(question, answer));
+    dispatch(incrementStep());
+    dispatch(incrementMistake(question, answer));
   }
 });
 
