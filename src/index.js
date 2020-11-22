@@ -9,7 +9,7 @@ import App from './components/app/app';
 import rootReducer from './store/reducers/root-reducer';
 import {createAPI} from './services/api';
 import {requireAuthorization} from './store/action';
-import {fetchQuestionList, checkAuth} from './store/api-actions';
+import {fetchQuestionList, checkAuth} from './store/api-action';
 import {AuthorizationStatus} from './const';
 
 const api = createAPI(() => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)));
