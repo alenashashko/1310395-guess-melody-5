@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import {Switch, Route, Router} from 'react-router-dom';
 
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 import AuthScreen from '../auth-screen/auth-screen';
@@ -7,11 +7,13 @@ import GameScreen from '../game-screen/game-screen';
 import GameOverScreen from '../game-over-screen/game-over-screen';
 import WinScreen from '../win-screen/win-screen';
 import PrivateRoute from '../private-route/private-route';
+
 import {MAX_MISTAKE_COUNT} from '../../const';
+import browserHistory from '../../browser-history';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router history={browserHistory}>
       <Switch>
         <Route
           exact
@@ -65,7 +67,7 @@ const App = () => {
           <GameScreen errorsCount={MAX_MISTAKE_COUNT}/>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 
