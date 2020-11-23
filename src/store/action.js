@@ -50,3 +50,9 @@ export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status
 });
+
+export const redirectToRoute = (url) => ({
+  type: ActionType.REDIRECT_TO_ROUTE,
+  payload: url
+});
+
