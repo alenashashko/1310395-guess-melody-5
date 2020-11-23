@@ -47,7 +47,9 @@ class AuthScreen extends PureComponent {
           </p>
           <button className="login__button button" type="submit">Войти</button>
         </form>
-        <button onClick={onReplayButtonClick} className="replay" type="button">Сыграть ещё раз</button>
+        <button onClick={onReplayButtonClick} className="replay" type="button">
+          Сыграть ещё раз
+        </button>
       </section>
     );
   }
