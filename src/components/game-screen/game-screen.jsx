@@ -11,7 +11,7 @@ import Mistakes from '../mistakes/mistakes';
 import artistQuestionProp from '../artist-question-screen/artist-question.prop';
 import genreQuestionProp from '../genre-question-screen/genre-question.prop';
 
-import {GameType, MAX_MISTAKE_COUNT} from '../../const';
+import {GameType, MAX_MISTAKE_COUNT, AppRoute} from '../../const';
 import {incrementStep, incrementMistake} from '../../store/action';
 
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
@@ -23,13 +23,13 @@ const GameScreen = (props) => { // errorsCount ?
 
   if (mistakes >= MAX_MISTAKE_COUNT) {
     return (
-      <Redirect to='/lose' />
+      <Redirect to={AppRoute.LOSE} />
     );
   }
 
   if (step >= questions.length || !question) {
     return (
-      <Redirect to='/result' />
+      <Redirect to={AppRoute.RESULT} />
     );
   }
 
@@ -53,7 +53,7 @@ const GameScreen = (props) => { // errorsCount ?
         </GenreQuestionScreenWrapped>
       );
     default:
-      return <Redirect to="/" />;
+      return <Redirect to={AppRoute.ROOT} />;
   }
 };
 
