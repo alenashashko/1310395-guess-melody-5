@@ -3,7 +3,7 @@ export const GameType = {
   GENRE: `genre`
 };
 
-export const MistakeStatus = {
+export const MistakeOption = {
   MISTAKE: 1,
   NO_MISTAKE: 0
 };
