@@ -6,5 +6,5 @@ export const redirect = () => (next) => (action) => {
     browserHistory.push(action.payload);
   }
 
-  return next(action); // ?
+  return next(action);
 };

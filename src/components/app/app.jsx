@@ -1,5 +1,7 @@
 import React from 'react';
 import {Switch, Route, Router} from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {connect} from "react-redux";
 
 import WelcomeScreen from '../welcome-screen/welcome-screen';
 import AuthScreen from '../auth-screen/auth-screen';
@@ -9,9 +11,15 @@ import WinScreen from '../win-screen/win-screen';
 import PrivateRoute from '../private-route/private-route';
 
 import browserHistory from '../../browser-history';
-import {MAX_MISTAKE_COUNT, AppRoute} from '../../const';
+import {MAX_MISTAKE_COUNT, AppRoute, AuthorizationStatus} from '../../const';
 
-const App = () => {
+const App = (props) => {
+  const {authorizationStatus} = props;
+
+  if (authorizationStatus === AuthorizationStatus.UNKNOWN) {
+    return null;
+  }
+
   return (
     <Router history={browserHistory}>
       <Switch>
@@ -71,4 +79,12 @@ const App = () => {
   );
 };
 
-export default App;
+App.propTypes = {
+  authorizationStatus: PropTypes.oneOf([AuthorizationStatus.UNKNOWN, AuthorizationStatus.AUTH, AuthorizationStatus.NO_AUTH]),
+};
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: state.USER.authorizationStatus
+});
+
+export default connect(mapStateToProps)(App);

@@ -3,7 +3,13 @@ export const GameType = {
   GENRE: `genre`
 };
 
+export const MistakeStatus = {
+  MISTAKE: 1,
+  NO_MISTAKE: 0
+};
+
 export const AuthorizationStatus = {
+  UNKNOWN: `UNKNOWN`,
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`
 };

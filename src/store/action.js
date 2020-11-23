@@ -1,9 +1,7 @@
-import {GameType} from '../const';
+import {GameType, MistakeStatus} from '../const';
 import {isArtistAnswerCorrect, isGenreAnswerCorrect} from '../game';
 
 const STEP = 1;
-const NO_MISTAKE = 0;
-const MISTAKE = 1;
 
 export const ActionType = {
   INCREMENT_STEP: `INCREMENT_STEP`,
@@ -37,7 +35,7 @@ export const incrementMistake = (question, userAnswer) => {
 
   return {
     type: ActionType.INCREMENT_MISTAKES,
-    payload: answerIsCorrect ? NO_MISTAKE : MISTAKE
+    payload: answerIsCorrect ? MistakeStatus.NO_MISTAKE : MistakeStatus.MISTAKE
   };
 };
 

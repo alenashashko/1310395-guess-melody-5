@@ -10,6 +10,8 @@ class AuthScreen extends PureComponent {
 
     this.loginRef = createRef();
     this.passwordRef = createRef();
+
+    this._handleSubmit = this._handleSubmit.bind(this);
   }
 
   _handleSubmit(evt) {
@@ -18,7 +20,7 @@ class AuthScreen extends PureComponent {
     evt.preventDefault();
 
     onSubmit({
-      login: this.loginRef.current.value,
+      email: this.loginRef.current.value,
       password: this.passwordRef.current.value
     });
   }

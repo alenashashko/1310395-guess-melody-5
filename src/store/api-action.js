@@ -12,13 +12,13 @@ export const checkAuth = () => {
   return (dispatch, _getState, api) => {
     api.get(APIRoute.LOGIN)
       .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-      .catch(); // ?
+      .catch(() => {}); // ?
   };
 };
 
-export const login = ({login: email, password}) => { // ?
+export const login = (body) => {
   return (dispatch, _getState, api) => {
-    api.post(APIRoute.LOGIN, {email, password})
+    api.post(APIRoute.LOGIN, body)
       .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
       .then(() => dispatch(redirectToRoute(AppRoute.RESULT)));
   };
