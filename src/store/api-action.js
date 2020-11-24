@@ -14,7 +14,7 @@ export const checkAuth = () => {
       .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
       .catch((err) => {
         throw err;
-      }); // ?
+      });
   };
 };
 
