@@ -8,8 +8,8 @@ class AuthScreen extends PureComponent {
   constructor(props) {
     super(props);
 
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
+    this._loginRef = createRef();
+    this._passwordRef = createRef();
 
     this._handleSubmit = this._handleSubmit.bind(this);
   }
@@ -20,8 +20,8 @@ class AuthScreen extends PureComponent {
     evt.preventDefault();
 
     onSubmit({
-      email: this.loginRef.current.value,
-      password: this.passwordRef.current.value
+      email: this._loginRef.current.value,
+      password: this._passwordRef.current.value
     });
   }
 
@@ -38,12 +38,12 @@ class AuthScreen extends PureComponent {
         <form onSubmit={this._handleSubmit} className="login__form" action="">
           <p className="login__field">
             <label className="login__label" htmlFor="name">Логин</label>
-            <input ref= {this.loginRef} className="login__input" type="text"
+            <input ref= {this._loginRef} className="login__input" type="text"
               name="name" id="name" />
           </p>
           <p className="login__field">
             <label className="login__label" htmlFor="password">Пароль</label>
-            <input ref= {this.passwordRef} className="login__input"
+            <input ref= {this._passwordRef} className="login__input"
               type="text" name="password" id="password" />
             <span className="login__error">Неверный пароль</span>
           </p>

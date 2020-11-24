@@ -12,7 +12,9 @@ export const checkAuth = () => {
   return (dispatch, _getState, api) => {
     api.get(APIRoute.LOGIN)
       .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-      .catch(() => {}); // ?
+      .catch((err) => {
+        throw err;
+      }); // ?
   };
 };
 
