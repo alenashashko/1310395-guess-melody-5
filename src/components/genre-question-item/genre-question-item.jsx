@@ -31,7 +31,7 @@ GenreQuestionItem.propTypes = {
     genre: PropTypes.string.isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,
-  userAnswer: PropTypes.PropTypes.bool.isRequired
+  userAnswer: PropTypes.bool.isRequired
 };
 
 export default React.memo(GenreQuestionItem);

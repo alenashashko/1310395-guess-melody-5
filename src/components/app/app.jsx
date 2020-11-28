@@ -87,4 +87,5 @@ const mapStateToProps = (state) => ({
   authorizationStatus: state.USER.authorizationStatus
 });
 
+export {App};
 export default connect(mapStateToProps)(React.memo(App));

@@ -17,7 +17,7 @@ import {incrementStep, incrementMistake} from '../../store/action';
 const GenreQuestionScreenWrapped = withActivePlayer(withUserAnswer(GenreQuestionScreen));
 const ArtistQuestionScreenWrapped = withActivePlayer(ArtistQuestionScreen);
 
-const GameScreen = (props) => { // errorsCount ?
+const GameScreen = (props) => {
   const {questions, step, mistakes, onUserAnswer} = props;
   const question = questions[step];
 
