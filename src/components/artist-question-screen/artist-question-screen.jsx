@@ -38,8 +38,7 @@ const ArtistQuestionScreen = (props) => {
                 <input className="artist__input visually-hidden" type="radio" name="answer"
                   value={`artist-${i + 1}`}
                   id={`artist-${i + 1}`}
-                  onChange={(evt) => {
-                    evt.preventDefault(); // ?
+                  onChange={() => {
                     onAnswerClick(question, answer);
                   }}
                 />
